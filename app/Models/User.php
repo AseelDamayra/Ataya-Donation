@@ -60,6 +60,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
     	return $this->hasMany(Comment::class);
     }
+    public function admin()
+    {
+    	return $this->belongsTo(Admin_data::class);
+    }
 
     public function vulanteer()
     {

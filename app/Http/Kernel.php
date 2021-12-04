@@ -69,6 +69,7 @@ class Kernel extends HttpKernel
 
         'seeker'=>\App\Http\Middleware\IsSeeker::class,
         'donar'=>\App\Http\Middleware\IsDonar::class,
+        'dashboard'=>\App\Http\Middleware\dashboard::class,
 
     ];
 }

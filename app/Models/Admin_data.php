@@ -2,11 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Admin_data extends Model
 {
     protected $guarded=['admin_id','created_at','updated_at'];
     use HasFactory;
+
+    public function user()
+    {
+    	return $this->hasmany(User::class);
+    }
+
+   
+
 }
