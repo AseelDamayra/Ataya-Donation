@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Admin_data;
+
 return [
 
     /*
@@ -40,6 +42,7 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+    
     ],
 
     /*
@@ -64,7 +67,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
+    
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

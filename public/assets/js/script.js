@@ -5,8 +5,6 @@ $(window).scroll(function(){
     $('marquee').toggleClass('scrolling',$(this).scrollTop() > 400);
 });
 
-
-
 //start sign-in-up
 // $(document).ready(function(){
 //     $('.sign_in').click(function(){

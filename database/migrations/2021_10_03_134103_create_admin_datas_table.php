@@ -17,11 +17,11 @@ class CreateAdminDatasTable extends Migration
             $table->id();
             $table->string("name",255);
             $table->string("email",255);
+            $table->string('password')->nullable();
             $table->integer("mobile");
             $table->string('facebook',255)->nullable();
             $table->string('twitter',255)->nullable();
             $table->string('instagram',255)->nullable();
-            $table->integer("login_id")->default(0);;
             $table->string("image",255);
             $table->timestamps();
         });

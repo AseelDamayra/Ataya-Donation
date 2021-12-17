@@ -189,7 +189,12 @@ color: #fff;
         background-size: cover;
         background-position: center center;
     }
+    .navbar-nav{
+        background-color: #dfa11d;
+    }
+
 }
+
 
 /*end header*/
 
@@ -948,7 +953,7 @@ svg {
   position: relative;
 }
 
-.NotF{
+.NotF1{
   text-align: center;
   font: 2em 'Roboto', sans-serif;
   font-weight: bold;
@@ -958,6 +963,16 @@ svg {
  right: 21%;
  
 }
+.NotF2{
+    text-align: center;
+    font: 2em 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #dfa11d;
+    position: absolute;
+    top: 66%;
+    right: 36%;
+   
+  }
 .NotV{
     text-align: center;
     font: 2em 'Roboto', sans-serif;
@@ -970,8 +985,12 @@ svg {
   }
   @media(max-width:600px){
 
-    .NotF{
+    .NotF1{
         right: 5%;
+        font-size: 18px;    
+      }
+      .NotF2{
+        right: 27%;
         font-size: 18px;    
       }
     .NotV{

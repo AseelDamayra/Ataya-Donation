@@ -80,7 +80,7 @@
       
     </fieldset>
         <div class="text-right pb-5">
-            <button class="btn mainbg-color hoverbutton rounded text-light" name="submit" type="submit">إرسال</button>
+            <button class="btn mainbg-color hoverbutton rounded text-light" type="submit">إرسال</button>
         </div>
 
 </form>
@@ -90,4 +90,7 @@
 </div>
 </div>
     </section>
+
+
+
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Admin_data;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -43,7 +44,7 @@ class AdminDataController extends Controller
            'twitter'=>$request->twitter,
            'instagram'=>$request->instagram,
            'image'=>$newImage,
-
+          
         ]);
        
         $request->session()->flash('success','تمت العملية بنجاح');

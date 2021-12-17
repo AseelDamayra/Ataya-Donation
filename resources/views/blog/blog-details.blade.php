@@ -21,17 +21,24 @@
 				
 					<p class="bg-light py-5 px-5">{{$blog->topic}}</p>
                 
-                   @auth
+                 
                     <div class="comment">
                     <h3 class="heading">التعليقات: {{$blog->comment()->count()}}</h3>
                     
                     @foreach($comment as $c)
                         <div class="posts my-4">
                         <span>{{$c->user->name}}:</span>
-                        <p class="w-75"><span class="date">{{$c->created_at}}</span>{{$c->comment}}</p>
-                         </div>
-                    @endforeach   
-                    
+                        <p class="w-75 "><span class="date">{{$c->created_at}}</span>{{$c->comment}}</p>                 
+                  @auth
+                  @if($c->user_id === \Auth::user()->id)
+                     <a href="{{url("comment/remove/$c->id")}}" class="btn bg-danger text-white rounded mr-4">حذف التعليق</a>
+              @endif
+                     @endauth
+                    </div>
+                  
+                           @endforeach   
+                     @auth
+                      
                      @include('inc.message')
                       <div class="container">
                         <form method="post" action="{{url("comment/send")}}">

@@ -20,19 +20,21 @@ class ComposeController extends Controller
           'name'=>'required|string|max:255',
           'email'=>'required|email|max:255',
           'subject'=>'nullable',
-          'message'=>'required|string'
+          'message'=>'required|string',
         ]);
 
         if($validator->fails()){
             $errors=$validator->errors();
             return redirect(url('contact_us'))->withErrors($errors);
         }
-
+        
+       $s=$request->input('status');
         Compose::create([
            'sender'=>$request->name,
            'email'=>$request->email,
            'subject'=>$request->subject,
            'contact'=>$request->message,
+           'status'=>$s,
         ]);
        
         $request->session()->flash('success','تم ارسال الرسالة بنجاح');

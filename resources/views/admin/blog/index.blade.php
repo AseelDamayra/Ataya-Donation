@@ -48,7 +48,7 @@
 				
                 
                   <div class="form-group"> <label for="exampleInputtext1" >الوصف</label> 
-                    <textarea type="text" name='topic' class="form-control  text-right" id="exampleInputtext1" placeholder="">
+                    <textarea type="text" name='topic' class="form-control  text-right" style="height: 300px" id="exampleInputtext1" placeholder="">
                     </textarea>
                 </div>
                   

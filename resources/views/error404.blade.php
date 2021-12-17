@@ -11,8 +11,8 @@
 
 <section class="error4 text-right vh-100">
      <div class="content">
-     <h1 class="NotF">الرجاء تسجيل الدخول مرة اخرى مع مراعاة نوع المستخدم </h1>
-
+     <h1 class="NotF1">الرجاء تسجيل الدخول مرة اخرى مع مراعاة نوع المستخدم </h1>
+     <h1 class="NotF2">(تسجيل الدخول كمستفيد) </h1>
   <svg viewBox="0 0 960 300">
       
 	<symbol id="s-text">

@@ -19,6 +19,7 @@
                         <h3 class="text-md mb-5 text-right"> تواصل معنا من خلال تعبئة النموذج التالي </h3>
                         @include('inc.message')
                       <div class="row text-right">
+                      <input name="status" type="hidden" class="form-control" value="1">
                           <div class="col-lg-6">
                                <div class="form-group">
                                     <label>الإسم الكامل</label>

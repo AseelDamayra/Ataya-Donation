@@ -12,9 +12,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>وحدة تحكم - عطايا</title>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{asset('admin/css/fontawesome.all.css')}}">
+  <link rel="stylesheet" href="{{asset('adminStyle/css/fontawesome.all.css')}}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('admin/css/adminlte.css')}}">
+  <link rel="stylesheet" href="{{asset('adminStyle/css/adminlte.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   @yield('style')
@@ -166,22 +166,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
          
      
               <li class="nav-item">
-                <a href="mailbox.php" class="nav-link">     
+                <a href="{{url('/dashboard/inbox')}}" class="nav-link">     
                   <p>صندوق الوارد </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="compose.php" class="nav-link">
+                <a href="{{url('/dashboard/newmsg')}}" class="nav-link">
                   <p>رسالة جديدة </p>
                 </a>
               </li>
 			   <li class="nav-item">
-                <a href="recycle.php"   class="nav-link">
+                <a href="{{url('/dashboard/recycle')}}"  class="nav-link">
                   <p>سلة المحذوفات </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="sendmail.php" class="nav-link">
+                <a href="{{url('/dashboard/sendmail')}}" class="nav-link">
                   <p>الرسائل المرسلة  </p>
                 </a>
 				
@@ -208,9 +208,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             
                   
                   <li class="nav-item text-right">
-                    <a href="recover-password-v2.php" class="nav-link">
+                    <a href="{{url('/dashboard/logout')}}" class="nav-link">
                    
-                      <p>تغيير كلمة السر  </p>
+                      <p>تسجيل الخروج </p>
                     </a>
                   </li>
                 
@@ -246,11 +246,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="{{asset('admin/js/jquery.js')}}"></script>
+<script src="{{asset('adminStyle/js/jquery.js')}}"></script>
 <!-- Bootstrap 4 -->
-<script src="{{asset('admin/js/bootstrap.bundle.js')}}"></script>
+<script src="{{asset('adminStyle/js/bootstrap.bundle.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="{{asset('admin/js/adminlte.js')}}"></script>
+<script src="{{asset('adminStyle/js/adminlte.js')}}"></script>
 
 @yield('script')
 </body>

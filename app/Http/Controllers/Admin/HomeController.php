@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    
+
      public function index(){
 
-        $data['admin']=Admin_data::select('name')->where('login_id','1')->get();
+        $data['admin']=Admin_data::select('name')->get();
          $data['smallPAcc']=Small_project::where('status','1')->count();
          $data['smallPNAcc']=Small_project::where('status','0')->count();
 

@@ -25,8 +25,8 @@ class BlogController extends Controller
 
         $data['admin']=Admin_data::get();
         $data['blog']=Blog::findOrFail($id);
-       $data['comment']=Comment::where('blog_id',$id)->get();
-      
+    //    $data['comment']=Comment::where('blog_id',$id)->get();
+       $data['comment']=Comment::get();
         return view('blog.blog-details')->with($data);
     }
 
@@ -48,4 +48,14 @@ class BlogController extends Controller
              return back();
     }
 
+    public function remove(comment $Cid,Request $request){
+        
+            $isDeleted=$Cid->delete();
+            $msg="تم الحذف بنجاح";
+      
+           
+            $request->session()->flash('success',$msg);
+            return back();     
+        
+}
 }

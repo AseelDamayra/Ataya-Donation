@@ -21,6 +21,7 @@ class CreateComposesTable extends Migration
             $table->string("contact",255);
             $table->timestamp('sendtime')->default(DB::raw('CURRENT_TIMESTAMP'));
             // $table->foreignId('user_id')->constrained();
+            $table->enum('status',['0','1','2','3'])->default('0');
         });
     }
 

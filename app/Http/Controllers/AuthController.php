@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Session;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Admin_data;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -61,15 +62,18 @@ class AuthController extends Controller
             'password'=>'required|string|min:5|max:20',
             'role_id' => 'required',
          ]);
-       
-          $islogin=Auth::attempt(['email'=>$request->email,'password'=>$request->password,'role_id'=>$request->role_id]);
+        
+         $islogin=Auth::attempt(['email'=>$request->email,'password'=>$request->password,'role_id'=>$request->role_id]);
           
            
         if($islogin){
             return redirect(url('/'));
         }
         return back();
-     }
+   }
+
+        
+     
 
      public function logout(Request $request){
 
@@ -83,4 +87,6 @@ class AuthController extends Controller
         Session::flash('success', 'تم تسجيل الخروج بنجاح');
         return redirect('/');
     }
+
+
 }

@@ -60,7 +60,7 @@
 
           @foreach($admin as $d)
           <div class="profile">          
-         <img src="{{asset("assets/images/uploads/team/$d->image")}}"><span class="name">{{$d->name}}</span>
+         <img  src="{{asset("images/$d->image")}}"><span class="name">{{$d->name}}</span>
         </div>
         @endforeach
         

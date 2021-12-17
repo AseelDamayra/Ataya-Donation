@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Session;
+use Exception;
 use App\Models\User;
 use App\Models\Payment;
 use App\Models\Admin_data;
@@ -114,6 +115,7 @@ class DonateController extends Controller
     }
 
     public function studentshipDonate(Request $request,$id){
+    
         $validator=Validator::make($request->all(),[
             'payment'=>'required',
             'money'=>'required',
@@ -126,7 +128,7 @@ class DonateController extends Controller
              'phone'=>'nullable',
              'password'=>'nullable',
           ]);
-
+      
          $student=Studentship::findOrFail($id);
          $checkid=$request->NumberId;
          $checkmoney=$request->money;
@@ -161,6 +163,7 @@ class DonateController extends Controller
 
     }
         else{
+          
                $data=[
                    'payment_id'=>$request->payment,
                    'money'=>$request->money,
@@ -172,7 +175,7 @@ class DonateController extends Controller
                     'phone'=>$request->phone,
                     'password'=>Hash::make($request->password),
                 ];  
-               
+           
              
                        $student->user()->attach($id,$data); 
                        Session::flash('success', 'تم ارسال المبلغ المطلوب بنجاح');
@@ -180,9 +183,13 @@ class DonateController extends Controller
                
        
 
-      
+            }
+          
               return back();
-        }
-             
-    }
+            }
+        
+    
+        
+     
+    
 }

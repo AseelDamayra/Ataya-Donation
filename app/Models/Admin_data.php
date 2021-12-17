@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Admin_data extends Model
-{
-    protected $guarded=['admin_id','created_at','updated_at'];
+{ 
+  
+
+    protected $guarded=['id','created_at','updated_at'];
     use HasFactory;
 
     public function user()
@@ -16,6 +18,8 @@ class Admin_data extends Model
     	return $this->hasmany(User::class);
     }
 
-   
+
+  
+
 
 }

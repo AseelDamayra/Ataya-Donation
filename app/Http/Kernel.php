@@ -44,6 +44,7 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+      
     ];
 
     /**
@@ -70,6 +71,8 @@ class Kernel extends HttpKernel
         'seeker'=>\App\Http\Middleware\IsSeeker::class,
         'donar'=>\App\Http\Middleware\IsDonar::class,
         'dashboard'=>\App\Http\Middleware\dashboard::class,
+
+        'adminlogin' => \App\Http\Middleware\AdminAuth::class,
 
     ];
 }

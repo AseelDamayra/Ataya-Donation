@@ -22,6 +22,8 @@ use App\Http\Controllers\Admin\StudentshipController as StudentshipController;
 use App\Http\Controllers\Admin\EmergencyController as EmergencyController;
 use App\Http\Controllers\Admin\ViewProductController as ViewProductController;
 use App\Http\Controllers\Admin\VolunteerController as VController;
+use App\Http\Controllers\Admin\AuthController as AuthAdminController;
+use App\Http\Controllers\Admin\ComposeController as AdminComposeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,10 +67,12 @@ Route::middleware('is-login')->group(function(){
 Route::get('logout',[AuthController::class,'logout']);
 //comment
 Route::post('comment/send', [BlogController::class,'send']);
+Route::get('comment/remove/{Cid}', [BlogController::class,'remove']);
 //profile
 Route::get('profile',[ProfileController::class,'profile']);
 Route::post('profile/update',[ProfileController::class,'sendUpdateInfo']);
 Route::post('profile/updatePass',[ProfileController::class,'sendUpdatepass']);
+
 //volunteer
 Route::post('volunteer/send', [VolunteerController::class,'send']);
 //seeker
@@ -94,7 +98,10 @@ Route::middleware('is-guest')->group(function(){
     
 });
 
-Route::prefix('/dashboard')->middleware(['dashboard'])->group(function(){
+ Route::get('/loginAdmin', [AuthAdminController::class,'getlogin']);  
+    Route::post('/loginAdmin',[AuthAdminController::class,'login']) ; 
+
+Route::prefix('/dashboard')->group(function(){
 
     Route::get('/',[AdminHomeController::class,'index']) ; 
     Route::get('/blog',[AdminBlogController::class,'blog']) ; 
@@ -127,7 +134,18 @@ Route::prefix('/dashboard')->middleware(['dashboard'])->group(function(){
     Route::get('/volunteerAcc/{Accvolunteer}',[VController::class,'Acceptv']) ; 
     Route::get('/volunteerDelete/{volunteer}',[VController::class,'deletev']) ;
     
+    Route::get('/logout', [AuthAdminController::class,'getlogout']);  
+   
+    Route::get('/inbox',[AdminComposeController::class,'inbox']) ; 
+    Route::get('/deletemsg/{id}',[AdminComposeController::class,'Deleteinbox']) ; 
+    Route::get('/newmsg',[AdminComposeController::class,'message']) ; 
+    Route::post('/newmsg',[AdminComposeController::class,'sendMsg']) ; 
+    Route::get('/recycle',[AdminComposeController::class,'recycle']) ; 
+    Route::get('/recycleD/{d}',[AdminComposeController::class,'Deleter']) ; 
+    Route::get('/sendmail',[AdminComposeController::class,'sendmail']) ; 
 });
+
+
 
 
 
