@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class ComposeController extends Controller
 {
     public function inbox(){
-        $data['inboxes']=Compose::where('status','1')->get();
+        $data['inboxes']=Compose::where('status','1')->orderBy('id','desc')->paginate(4);
         return view('admin.compose.inbox')->with($data);
     }
 
@@ -51,7 +51,7 @@ class ComposeController extends Controller
     }
 
     public function recycle(){
-        $data['recycle']=Compose::where('status','3')->get();
+        $data['recycle']=Compose::where('status','3')->orderBy('id','desc')->paginate(4);
         return view('admin.compose.recycle')->with($data);
     }
 
@@ -69,7 +69,7 @@ class ComposeController extends Controller
         } 
 
         public function sendmail(){
-            $data['sendmail']=Compose::where('status','2')->get();
+            $data['sendmail']=Compose::where('status','2')->orderBy('id','desc')->paginate(4);
             return view('admin.compose.sendmail')->with($data);
         }
 

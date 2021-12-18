@@ -52,7 +52,7 @@ class AdminDataController extends Controller
     }
 
     public function admindataTable(){
-        $data['admins']=Admin_data::get();
+        $data['admins']=Admin_data::orderBy('id','desc')->paginate(4);
         return view('admin.admindata.tableAdmindata')->with($data);
     }
 

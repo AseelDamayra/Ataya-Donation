@@ -23,6 +23,23 @@
                 <li class="list-group-item text-right"><span class="pull-left"><strong>المشاريع الصغيرة</strong></span>: {{$countSmallP}} </li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong>التبرع بالمنتجات</strong></span>: {{$countVProduct}}</li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong> التطوعات</strong></span>: {{$countVulanteer}}</li>
+              <button class="border-0  " type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  <li class="list-group-item text-right"><span class="pull-left"><strong> اللاشعارات </strong></span>: {{$Msgcount}}</li>
+                </button>
+                <div class="collapse text-right" id="collapseExample">
+                @foreach($message as $m)
+                    <div class="card card-body">
+                   
+                   الموضوع: {{$m->subject}}
+                     <br>
+                    محتوى الرسالة: {{$m->contact}}
+                     <br>
+                     {{$m->sendtime}}
+
+                   </div>
+                  @endforeach
+                  {{$message->links('inc.paginator')}}
+                 </div>
             </ul> 
             </div>       
             </div><!--/col-3-->

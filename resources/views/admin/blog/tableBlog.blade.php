@@ -81,7 +81,7 @@
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
-
+      {{$blogs->links('inc.paginator')}}
     </section>
     <!-- /.content -->
   </div>

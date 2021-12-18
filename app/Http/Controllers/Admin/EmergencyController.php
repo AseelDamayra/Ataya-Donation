@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class EmergencyController extends Controller
 {
     public function Emergency(){
-        $data['emergency']=Emergency::get();
+        $data['emergency']=Emergency::orderBy('id','desc')->paginate(4);
         return view('admin.emergency.tableEm')->with($data);
     }
 

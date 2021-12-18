@@ -119,7 +119,7 @@
 		  
         </div>
         <!-- /.card-body -->
-     
+        {{$volunteers->links('inc.paginator')}}
       <!-- /.card -->
 
     </section>

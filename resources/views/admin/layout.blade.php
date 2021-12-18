@@ -69,7 +69,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			<ul class="nav nav-treeview text-right">
               <li class="nav-item text-right">
                 <a href="{{url('/dashboard/blog')}}" class="nav-link">
-                  <p>المقالات والفيديو</p>
+                  <p>المقالات</p>
                 </a>
               </li>
              
@@ -129,6 +129,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a href="{{url('/dashboard/viewProduct')}}" class="nav-link">
                
                   <p>تسويق المنتجات </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('/dashboard/viewProductReq')}}" class="nav-link">
+               
+                  <p>المنتجات المطلوبة</p>
                 </a>
               </li>
 			   <li class="nav-item">

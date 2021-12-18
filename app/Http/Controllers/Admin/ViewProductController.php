@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class ViewProductController extends Controller
 {
     public function viewProduct(){
-        $data['products']=View_product::get();
+        $data['products']=View_product::where('reqStatus','0')->orderBy('id','desc')->paginate(4);
         return view('admin.product.tableproduct')->with($data);
     }
 
@@ -32,4 +32,21 @@ public function deletep(View_product $product,Request $request){
         $request->session()->flash('success',$msg);
         return back();
     } 
+
+    public function viewProductReq(){
+        $data['Reqproducts']=View_product::where('status','1')->where('reqStatus','1')->orderBy('id','desc')->paginate(4);
+        return view('admin.product.requestp')->with($data);
+    }
+
+    public function productDeletereq($id,Request $request){
+
+
+        $delete = View_product::where('id',$id)
+        ->update(['status' => '2']);
+        $request->session()->flash('success','تمت العملية بنجاح');
+           
+         
+            return back();
+        } 
+  
 }

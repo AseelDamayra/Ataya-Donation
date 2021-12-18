@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class SmallProjectController extends Controller
 {
     public function smallproject(){
-        $data['smallp']=Small_project::get();
+        $data['smallp']=Small_project::orderBy('id','desc')->paginate(4);
         return view('admin.smallproject.tableSmall')->with($data);
     }
 

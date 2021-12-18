@@ -61,7 +61,7 @@ class HomeController extends Controller
         $data['statusEm']=Emergency::where('status',1)->orderBy('id','desc')->limit(1)->get();
         $data['statusPro']=Small_project::where('status',1)->orderBy('id','desc')->limit(1)->get();
         $data['statusStu']=Studentship::where('status',1)->orderBy('id','desc')->limit(1)->get();
-        $data['statusVPrp']=View_product::where('status',1)->orderBy('id','desc')->limit(1)->get();
+        $data['statusVPrp']=View_product::where('status',1)->where('reqStatus','0')->orderBy('id','desc')->limit(1)->get();
 
         
   

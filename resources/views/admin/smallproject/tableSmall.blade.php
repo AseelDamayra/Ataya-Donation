@@ -120,7 +120,7 @@
 		  
         </div>
         <!-- /.card-body -->
-     
+        {{$smallp->links('inc.paginator')}}
       <!-- /.card -->
 
     </section>

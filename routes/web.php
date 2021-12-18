@@ -129,6 +129,8 @@ Route::prefix('/dashboard')->group(function(){
     Route::get('/viewProduct',[ViewProductController::class,'viewProduct']) ; 
     Route::get('/viewProductAcc/{Accproduct}',[ViewProductController::class,'Acceptp']) ; 
     Route::get('/viewProductDelete/{product}',[ViewProductController::class,'deletep']) ;
+    Route::get('/viewProductReq',[ViewProductController::class,'viewProductReq']) ; 
+    Route::get('/viewProductReq/{id}',[ViewProductController::class,'productDeletereq']) ; 
 
     Route::get('/volunteer',[VController::class,'volunteer']) ; 
     Route::get('/volunteerAcc/{Accvolunteer}',[VController::class,'Acceptv']) ; 

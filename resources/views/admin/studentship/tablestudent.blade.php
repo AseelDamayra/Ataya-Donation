@@ -126,7 +126,7 @@
         <!-- /.card-body -->
      
       <!-- /.card -->
-
+      {{$students->links('inc.paginator')}}
     </section>
     <!-- /.content -->
   </div>

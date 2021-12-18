@@ -1,8 +1,5 @@
 @extends('admin.layout')
 @section('main')
-<div class="wrapper">
-
- 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -14,8 +11,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-			<li class="breadcrumb-item active">صندوق الوارد</li>
-              <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">الصفحة الرئيسية</a></li>
+			<li class="breadcrumb-item active"> المنتجات المطلوبة</li>
+              <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">الصفحة الرئيسية </a></li>
               
             </ol>
           </div>
@@ -23,12 +20,14 @@
       </div><!-- /.container-fluid -->
     </section>
 
-    @include('../../inc.message')
     <!-- Main content -->
     <section class="content">
-    <div class="card card-outline card-primary">
+
+    @include('../../inc.message')
+      <!-- Default box -->
+      <div class="card card-outline card-primary">
         <div class="card-header">
-          <h5 class="text-right">صندوق الوارد</h5>
+          <h5 class="text-right">المنتجات المطلوبة</h5>
 
         </div>
         <div class="card-body p-0">
@@ -40,24 +39,24 @@
                           #
                       </th>
                       <th >
-                            اسم المرسل  
+                            اسم الشخص  
                       </th>
                       <th >
-                          البريد الالكتروني
+                           عنوان الشخص
                       </th>
                    
 					    <th >
-                          الموضوع
+                          رقم الهاتف 
                       </th>
                       <th >
-                        الرسالة
+                         اسم المنتج
                       </th>
                       <th >
-                        تاريخ الارسال
+                        وصف المنتج 
                       </th>
-					
+					  
 					   <th >
-                         حذف الرسالة
+                          حالة الطلب
                       </th>
 					  
 					  
@@ -65,33 +64,31 @@
               </thead>
               <tbody>
          
-    @foreach($inboxes as $inbox)
+    @foreach($Reqproducts as $reqp)
 <tr class="bg-white"> 
 <td>{{$loop->iteration}}</td>
-    <td>{{$inbox->sender}}</td>
-	<td>{{$inbox->email}}</td>
-    <td>{{$inbox->subject}}</td>
-    <td>{{$inbox->contact}}</td>
-    <td>{{$inbox->sendtime}}</td>
-   
+    <td>{{$reqp->name}}</td>
+	<td>{{$reqp->address}}</td>
+    <td>{{$reqp->mobile}}</td>
+    <td>{{$reqp->productName}}</td>
+    <td>{{$reqp->topic}}</td>
+  
     
-              @if($inbox->status == 1)
-             
-                   <td>
-                          <a name="status" class="btn btn-danger text-light btn-sm" href="{{url("/dashboard/deletemsg/$inbox->id")}}" >
+                 @if($reqp->status == 1)
+                      <td >
+                   
+                          <a class="btn btn-danger text-light btn-sm" href="{{url("/dashboard/viewProductReq/$reqp->id")}}" >
                               <i class="fas fa-trash">
                               </i>
                               حذف
                           </a>
                       </td>
-
-                @endif      
-</tr>   
+                 
                    
-	 
+	   @endif 
 					  
 
-
+</tr>
 @endforeach
 
 
@@ -110,9 +107,20 @@
 		  
 		  
         </div>
-        {{$inboxes->links('inc.paginator')}}
-</section>
- 
+        <!-- /.card-body -->
+     
+      <!-- /.card -->
+      {{$Reqproducts->links('inc.paginator')}}
+    </section>
+    <!-- /.content -->
+  </div>
+  
+  
+  
+  
+  
+  
+  
   <!-- /.content-wrapper -->
 
- @endsection
+@endsection

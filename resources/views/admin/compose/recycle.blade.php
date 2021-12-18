@@ -110,6 +110,7 @@
 		  
 		  
         </div>
+        {{$recycle->links('inc.paginator')}}
 </section>
  
   <!-- /.content-wrapper -->

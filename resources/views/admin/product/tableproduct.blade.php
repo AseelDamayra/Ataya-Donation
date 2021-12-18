@@ -124,7 +124,7 @@
         <!-- /.card-body -->
      
       <!-- /.card -->
-
+      {{$products->links('inc.paginator')}}
     </section>
     <!-- /.content -->
   </div>

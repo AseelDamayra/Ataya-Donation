@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class StudentshipController extends Controller
 {
     public function studentship(){
-        $data['students']=Studentship::get();
+        $data['students']=Studentship::orderBy('id','desc')->paginate(4);
         return view('admin.studentship.tablestudent')->with($data);
     }
 

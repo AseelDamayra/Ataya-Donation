@@ -98,6 +98,7 @@
 		  
 		  
         </div>
+        {{$sendmail->links('inc.paginator')}}
 </section>
  
   <!-- /.content-wrapper -->

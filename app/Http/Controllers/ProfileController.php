@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Session;
 use App\Models\User;
+use App\Models\Compose;
 use App\Models\Admin_data;
 use App\Models\Studentship;
 use Illuminate\Http\Request;
@@ -25,7 +26,16 @@ class ProfileController extends Controller
        $data['countSmallP']=$data['profile']->smallProject()->count();
        $data['countVProduct']=$data['profile']->viewproduct()->count();
        $data['countVulanteer']=$data['profile']->vulanteer_accepted()->count();
-       
+       $data['message']=Compose::select('sendtime','subject','contact')
+       ->where('email','=',Auth::user()->email)
+       ->where('sender','=',Auth::user()->name)
+       ->where('status','=','2')
+       ->orderBy('id','desc')->paginate(2);
+       $data['Msgcount']=Compose::where('email','=',Auth::user()->email)
+       ->where('sender','=',Auth::user()->name)
+       ->where('status','=','2')
+       ->count();
+  
          return view('profile.profile' )->with($data);
     }
 

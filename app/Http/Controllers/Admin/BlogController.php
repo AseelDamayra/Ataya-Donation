@@ -31,7 +31,7 @@ class BlogController extends Controller
 
     public function Tableshow(){
 
-        $data['blogs']=Blog::get();
+        $data['blogs']=Blog::orderBy('id','desc')->paginate(2);
         return view('admin.blog.tableBlog')->with($data);
     }
 

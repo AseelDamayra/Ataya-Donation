@@ -93,6 +93,7 @@
 
   @auth   
   <a href="{{url('profile')}}" class="welcom-user"><span> تشرفنا بزيارتك </span>{{Auth::user()->name}}</a>
+ 
   @endauth         
 
 

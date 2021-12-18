@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class VolunteerController extends Controller
 {
     public function volunteer(){
-        $data['volunteers']=Volunteer::get();
+        $data['volunteers']=Volunteer::orderBy('id','desc')->paginate(4);
         return view('admin.volunteer.tablevolunteer')->with($data);
     }
 

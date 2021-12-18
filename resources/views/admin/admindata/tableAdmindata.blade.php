@@ -116,7 +116,7 @@
 		  
         </div>
         <!-- /.card-body -->
-     
+        {{$admins->links('inc.paginator')}}
       <!-- /.card -->
 
     </section>

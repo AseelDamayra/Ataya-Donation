@@ -15,7 +15,9 @@ class CausesController extends Controller
 {
     public function viewproduct(){
         $data['admin']=Admin_data::get();
-        $data['viewPro']=View_product::where('status',1)->orderBy('id','desc')->paginate(6);
+        $data['viewPro']=View_product::where('status','1')
+        ->where('reqStatus','0')
+        ->orderBy('id','desc')->paginate(6);
         return view('causes.viewproduct')->with($data);
     }
 
@@ -51,13 +53,18 @@ class CausesController extends Controller
       $user=Auth::user();
       $product=View_product::findOrFail($id);
       
+     
       $countuser = $product->user()->count();
     if($countuser > 0){
+        $vp = View_product::where('id',$id)
+        ->update(['reqStatus' => '1']);
         Session::flash('danger', 'تم طلب المنتج مسبقا');
         return back();
     }else{
         
          $user->viewproduct()->attach($id);
+         $vp = View_product::where('id',$id)
+         ->update(['reqStatus' => '1']);
       Session::flash('success', 'تم طلب المنتج بنجاح');
      return back();
      }

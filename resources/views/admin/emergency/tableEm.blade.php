@@ -124,7 +124,7 @@
 		  
         </div>
         <!-- /.card-body -->
-     
+        {{$emergency->links('inc.paginator')}}
       <!-- /.card -->
 
     </section>
