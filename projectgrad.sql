@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2021 at 04:10 PM
+-- Generation Time: Dec 20, 2021 at 11:17 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -28,14 +28,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin_datas` (
-  `admin_id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mobile` int(11) NOT NULL,
   `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `twitter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `instagram` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `login_id` int(11) NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -45,8 +45,11 @@ CREATE TABLE `admin_datas` (
 -- Dumping data for table `admin_datas`
 --
 
-INSERT INTO `admin_datas` (`admin_id`, `name`, `email`, `mobile`, `facebook`, `twitter`, `instagram`, `login_id`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'اسلام', 'i@g.com', 8937434, NULL, NULL, NULL, 1, 'uploads/team/1.jpg', NULL, NULL);
+INSERT INTO `admin_datas` (`id`, `name`, `email`, `password`, `mobile`, `facebook`, `twitter`, `instagram`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'اسيل', 'a@gmail.com', NULL, 5982633, NULL, NULL, NULL, '1.jpg', '2021-12-18 10:49:01', '2021-12-18 10:49:01'),
+(2, 'اسلام', 'a@gmail.com', NULL, 598262, NULL, NULL, NULL, '3.jpg', '2021-12-18 10:49:15', '2021-12-18 10:49:15'),
+(3, 'نسمة', 'a@gmail.com', NULL, 5982633, NULL, NULL, NULL, '2.jpg', '2021-12-18 10:49:35', '2021-12-18 10:49:35'),
+(4, 'هديل', 'a@gmail.com', NULL, 598262222, NULL, NULL, NULL, '4.jpg', '2021-12-18 10:49:48', '2021-12-18 10:49:48');
 
 -- --------------------------------------------------------
 
@@ -61,6 +64,15 @@ CREATE TABLE `blogs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `blogs`
+--
+
+INSERT INTO `blogs` (`id`, `title`, `topic`, `created_at`, `updated_at`) VALUES
+(1, 'الصدقة بالمال', 'الصدقة بالأموال من أنواع الجهاد المتعددة، بل إن الجهاد بالمال ورد مقدماً على الجهاد بالنفس في جميع الآيات التي ورد فيها ذكر الجهاد إلا في موضع واحد، وقد قال صلى الله عليه وسلم: (جاهدوا المشركين بأموالكم وأنفسكم وألسنتكم) رواه أبو داود.', '2021-12-18 11:42:40', '2021-12-18 11:42:40'),
+(2, 'الصدقة والبلاء', 'تدفع عن صاحبها المصائب والبلايا، وتنجيه من الكروب والشدائد، قال صلى الله عليه وسلم: (صنائع المعروف تقي مصارع السوء والآفات والهلكات، وأهل المعروف في الدنيا هم أهل المعروف في الآخرة) رواه الحاكم وصححه الألباني.', '2021-12-18 11:43:05', '2021-12-18 11:43:05'),
+(3, 'الصدقة والخطايا', 'صدقة تطفئ الخطايا، وتكفر الذنوب والسيئات، قال صلى الله عليه وسلم لمعاذ رضي الله عنه: (والصدقة تطفئ الخطيئة كما يطفئ الماء النار) رواه الترمذي.', '2021-12-18 11:43:31', '2021-12-18 11:43:31');
 
 -- --------------------------------------------------------
 
@@ -89,8 +101,17 @@ CREATE TABLE `composes` (
   `subject` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `contact` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sendtime` timestamp NOT NULL DEFAULT current_timestamp()
+  `sendtime` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` enum('0','1','2','3') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `composes`
+--
+
+INSERT INTO `composes` (`id`, `sender`, `subject`, `email`, `contact`, `sendtime`, `status`) VALUES
+(1, 'امال', NULL, 'a@gmail.com', 'اهلا', '2021-12-18 13:38:51', '1'),
+(2, 'امال', 'التبرع', 'a@gmail.com', 'نشكرك على انضمامك لعطايا', '2021-12-18 13:44:55', '2');
 
 -- --------------------------------------------------------
 
@@ -117,8 +138,7 @@ CREATE TABLE `emergencies` (
 --
 
 INSERT INTO `emergencies` (`id`, `type`, `name`, `City`, `hospital`, `mobile`, `status`, `numberOfUnit`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'A+', 'محمد', 'سلفيت', 'رافيديا', 8937434, 1, 2, 1, NULL, NULL),
-(2, 'A+', 'امال', 'نابلس', 'التخصصي', 5982633, 0, 2, 2, '2021-11-06 13:48:57', '2021-11-06 13:48:57');
+(1, 'A+', 'امال', 'طولكرم', 'التخصصي', 5982633, 1, 2, 2, '2021-12-18 11:37:16', '2021-12-18 11:43:51');
 
 -- --------------------------------------------------------
 
@@ -139,6 +159,20 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `login_admins`
+--
+
+CREATE TABLE `login_admins` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -153,27 +187,27 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(56, '2013_10_20_110604_create_roles_table', 1),
-(57, '2014_10_12_000000_create_users_table', 1),
-(58, '2014_10_12_100000_create_password_resets_table', 1),
-(59, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
-(60, '2019_08_19_000000_create_failed_jobs_table', 1),
-(61, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(62, '2021_10_03_134103_create_admin_datas_table', 1),
-(63, '2021_10_03_134815_create_user_login_table', 1),
-(64, '2021_10_03_140340_create_emergencies_table', 1),
-(65, '2021_10_03_141352_create_composes_table', 1),
-(66, '2021_10_03_141915_create_small_projects_table', 1),
-(67, '2021_10_03_142413_create_studentships_table', 1),
-(68, '2021_10_03_142927_create_view_products_table', 1),
-(69, '2021_10_03_143215_create_volunteers_table', 1),
-(70, '2021_10_05_082451_create_payments_table', 1),
-(71, '2021_10_11_130417_create_blogs_table', 1),
-(72, '2021_10_12_143319_create_comments_table', 1),
-(73, '2021_10_20_111505_create_role_user_table', 1),
-(74, '2021_10_20_114813_create_user_small_project_table', 1),
-(75, '2021_10_20_115314_create_user_studentship_table', 1),
-(76, '2021_11_02_142314_create_user_view_product_table', 1);
+(1, '2013_10_20_110604_create_roles_table', 1),
+(2, '2014_10_12_000000_create_users_table', 1),
+(3, '2014_10_12_100000_create_password_resets_table', 1),
+(4, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
+(5, '2019_08_19_000000_create_failed_jobs_table', 1),
+(6, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(7, '2021_10_03_134103_create_admin_datas_table', 1),
+(8, '2021_10_03_140340_create_emergencies_table', 1),
+(9, '2021_10_03_141352_create_composes_table', 1),
+(10, '2021_10_03_141915_create_small_projects_table', 1),
+(11, '2021_10_03_142413_create_studentships_table', 1),
+(12, '2021_10_03_142927_create_view_products_table', 1),
+(13, '2021_10_03_143215_create_volunteers_table', 1),
+(14, '2021_10_05_082451_create_payments_table', 1),
+(15, '2021_10_11_130417_create_blogs_table', 1),
+(16, '2021_10_12_143319_create_comments_table', 1),
+(17, '2021_10_20_111505_create_role_user_table', 1),
+(18, '2021_11_02_142314_create_user_view_product_table', 1),
+(19, '2021_11_11_111848_create_studentship_user_table', 1),
+(20, '2021_11_11_112028_create_small_project_user_table', 1),
+(21, '2021_12_11_153507_create_login_admins_table', 1);
 
 -- --------------------------------------------------------
 
@@ -205,7 +239,7 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'palpay', NULL, NULL),
+(1, 'paypal', NULL, NULL),
 (2, 'visa', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -267,10 +301,7 @@ CREATE TABLE `role_user` (
 
 INSERT INTO `role_user` (`id`, `user_id`, `role_id`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, NULL, NULL),
-(2, 2, 2, NULL, NULL),
-(3, 3, 1, NULL, NULL),
-(4, 1, 1, NULL, NULL),
-(5, 2, 2, NULL, NULL);
+(2, 2, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -296,7 +327,7 @@ CREATE TABLE `small_projects` (
 --
 
 INSERT INTO `small_projects` (`id`, `title`, `name`, `address`, `status`, `mobile`, `money`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'مصنع معلبات', 'علي', 'نابلس', 1, 8937434, 13000, 1, NULL, NULL);
+(1, 'مصنع معلبات', 'امال', 'طولكرم', 1, 5982633, 1500, 2, '2021-12-18 11:38:25', '2021-12-18 11:46:18');
 
 -- --------------------------------------------------------
 
@@ -310,21 +341,15 @@ CREATE TABLE `small_project_user` (
   `small_project_id` bigint(20) UNSIGNED NOT NULL,
   `money` int(11) NOT NULL,
   `payment_id` bigint(20) UNSIGNED NOT NULL,
-  `Allname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `NumberId` int(11) NOT NULL,
+  `Allname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `NumberId` bigint(20) DEFAULT NULL,
+  `CVV` int(11) DEFAULT NULL,
+  `dateOfEnd` date DEFAULT NULL,
+  `phone` bigint(20) DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `small_project_user`
---
-
-INSERT INTO `small_project_user` (`id`, `user_id`, `small_project_id`, `money`, `payment_id`, `Allname`, `NumberId`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 300, 2, 'امال علي محمد', 123456789, '2021-11-06 13:46:14', '2021-11-06 13:46:14'),
-(2, 1, 1, 300, 2, 'اسيل ضمايرة', 123456789, '2021-11-07 07:06:56', '2021-11-07 07:06:56'),
-(3, 1, 1, 1000, 2, 'امال علي محمد', 123456789, '2021-11-07 07:16:35', '2021-11-07 07:16:35'),
-(4, 1, 1, 11400, 1, 'اسيل ضمايرة', 123456789, '2021-11-07 07:17:39', '2021-11-07 07:17:39');
 
 -- --------------------------------------------------------
 
@@ -351,7 +376,9 @@ CREATE TABLE `studentships` (
 --
 
 INSERT INTO `studentships` (`id`, `major`, `name`, `University`, `City`, `status`, `mobile`, `money`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'انجليزي', 'اريج', 'الامريكية', 'طولكرم', 1, 8937434, 1500, 1, NULL, NULL);
+(1, 'علم حاسوب', 'امال', 'فلسطين', 'طولكرم', 0, 5982633, 67, 2, '2021-12-18 11:37:27', '2021-12-18 11:37:27'),
+(2, 'هندسة سيارات', 'امال', 'خضوري', 'طولكرم', 1, 5982633, 164, 2, '2021-12-18 11:37:44', '2021-12-18 11:43:44'),
+(3, 'علم حاسوب', 'امال', 'الامريكية', 'طولكرم', 0, 5982633, 67, 2, '2021-12-18 11:37:59', '2021-12-18 11:37:59');
 
 -- --------------------------------------------------------
 
@@ -365,22 +392,15 @@ CREATE TABLE `studentship_user` (
   `studentship_id` bigint(20) UNSIGNED NOT NULL,
   `money` int(11) NOT NULL,
   `payment_id` bigint(20) UNSIGNED NOT NULL,
-  `Allname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `NumberId` int(11) NOT NULL,
+  `Allname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `NumberId` bigint(20) DEFAULT NULL,
+  `CVV` int(11) DEFAULT NULL,
+  `dateOfEnd` date DEFAULT NULL,
+  `phone` bigint(20) DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `studentship_user`
---
-
-INSERT INTO `studentship_user` (`id`, `user_id`, `studentship_id`, `money`, `payment_id`, `Allname`, `NumberId`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 300, 1, 'اسيل ضمايرة', 123456789, '2021-11-06 12:48:07', '2021-11-06 12:48:07'),
-(2, 1, 1, 300, 2, 'امال علي محمد', 123456789, '2021-11-06 12:52:20', '2021-11-06 12:52:20'),
-(3, 1, 1, 300, 2, 'علي محمد', 123456789, '2021-11-06 13:01:12', '2021-11-06 13:01:12'),
-(4, 1, 1, 300, 2, 'اسيل ضمايرة', 123456789, '2021-11-07 07:14:31', '2021-11-07 07:14:31'),
-(5, 1, 1, 1500, 2, 'اسيل ضمايرة', 123456789, '2021-11-07 07:15:40', '2021-11-07 07:15:40');
 
 -- --------------------------------------------------------
 
@@ -409,23 +429,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `address`, `mobile`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'امال', 'a@gmail.com', NULL, '$2y$10$0XWPtAEG4CMkAScuk7TVbOJLuiNlYnHJH9LPD.7KyznuA/IlSv7YW', NULL, NULL, 'نابلس', 5982633, 1, NULL, '2021-11-06 14:01:16', '2021-11-06 14:01:16'),
-(2, 'امال', 'a@gmail.com', NULL, '$2y$10$BXkWZA7DcI4V1uIUwUr4Z.paSr5OEMzQa4caogp4B7Sh5N6PXE1f.', NULL, NULL, 'نابلس', 5982633, 2, NULL, '2021-11-06 14:01:33', '2021-11-06 14:01:33');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_login`
---
-
-CREATE TABLE `user_login` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pass` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Permissions` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(1, 'امال', 'a@gmail.com', NULL, '$2y$10$E2VSJq1gNhKs.HN.6To.IedI/RQKxzjCqYTSEwCzsGKO/nbcq6K.u', NULL, NULL, 'طولكرم', 5982633, 1, NULL, '2021-12-18 10:51:07', '2021-12-18 10:51:07'),
+(2, 'امال', 'a@gmail.com', NULL, '$2y$10$Gxmm93DW7nTx8r1HEugDVuG4vfEL4Oz4n9vSoG4jNzXbUqJAzbnc2', NULL, NULL, 'طولكرم', 5982633, 2, NULL, '2021-12-18 10:51:29', '2021-12-18 10:51:29');
 
 -- --------------------------------------------------------
 
@@ -446,7 +451,8 @@ CREATE TABLE `user_view_product` (
 --
 
 INSERT INTO `user_view_product` (`id`, `user_id`, `view_product_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, NULL, NULL);
+(1, 2, 1, NULL, NULL),
+(2, 2, 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -464,6 +470,7 @@ CREATE TABLE `view_products` (
   `mobile` int(11) NOT NULL,
   `filename` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
+  `reqStatus` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -472,8 +479,9 @@ CREATE TABLE `view_products` (
 -- Dumping data for table `view_products`
 --
 
-INSERT INTO `view_products` (`id`, `productName`, `name`, `address`, `topic`, `status`, `mobile`, `filename`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'راوتر', 'علي', 'نابلس', 'راوتر شحن', 1, 8937434, NULL, 1, NULL, NULL);
+INSERT INTO `view_products` (`id`, `productName`, `name`, `address`, `topic`, `status`, `mobile`, `filename`, `user_id`, `reqStatus`, `created_at`, `updated_at`) VALUES
+(1, 'راوتر', 'امال', 'طولكرم', 'من نوع MI .. لونه اسود', 2, 5982633, NULL, 2, '1', '2021-12-18 11:14:12', '2021-12-18 11:35:28'),
+(2, 'راوتر', 'امال', 'طولكرم', 'من نوع MI .. لونه ازرق', 1, 5982633, NULL, 2, '0', '2021-12-18 11:14:23', '2021-12-18 11:28:57');
 
 -- --------------------------------------------------------
 
@@ -498,7 +506,7 @@ CREATE TABLE `volunteers` (
 --
 
 INSERT INTO `volunteers` (`id`, `name`, `type`, `City`, `status`, `mobile`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'امال علي', 'ترميم منزل', 'نابلس', 0, 5982633, 1, '2021-11-06 13:47:35', '2021-11-06 13:47:35');
+(1, 'امال', 'ترميم منزل', 'طولكرم', 0, 5982633, 2, '2021-12-18 11:38:33', '2021-12-18 11:38:33');
 
 --
 -- Indexes for dumped tables
@@ -508,7 +516,7 @@ INSERT INTO `volunteers` (`id`, `name`, `type`, `City`, `status`, `mobile`, `use
 -- Indexes for table `admin_datas`
 --
 ALTER TABLE `admin_datas`
-  ADD PRIMARY KEY (`admin_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `blogs`
@@ -543,6 +551,12 @@ ALTER TABLE `emergencies`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `login_admins`
+--
+ALTER TABLE `login_admins`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
@@ -596,9 +610,9 @@ ALTER TABLE `small_projects`
 --
 ALTER TABLE `small_project_user`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_small_project_user_id_foreign` (`user_id`),
-  ADD KEY `user_small_project_small_project_id_foreign` (`small_project_id`),
-  ADD KEY `user_small_project_payment_id_foreign` (`payment_id`);
+  ADD KEY `small_project_user_user_id_foreign` (`user_id`),
+  ADD KEY `small_project_user_small_project_id_foreign` (`small_project_id`),
+  ADD KEY `small_project_user_payment_id_foreign` (`payment_id`);
 
 --
 -- Indexes for table `studentships`
@@ -612,9 +626,9 @@ ALTER TABLE `studentships`
 --
 ALTER TABLE `studentship_user`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_studentship_user_id_foreign` (`user_id`),
-  ADD KEY `user_studentship_studentship_id_foreign` (`studentship_id`),
-  ADD KEY `user_studentship_payment_id_foreign` (`payment_id`);
+  ADD KEY `studentship_user_user_id_foreign` (`user_id`),
+  ADD KEY `studentship_user_studentship_id_foreign` (`studentship_id`),
+  ADD KEY `studentship_user_payment_id_foreign` (`payment_id`);
 
 --
 -- Indexes for table `users`
@@ -622,12 +636,6 @@ ALTER TABLE `studentship_user`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `users_role_id_foreign` (`role_id`);
-
---
--- Indexes for table `user_login`
---
-ALTER TABLE `user_login`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user_view_product`
@@ -659,31 +667,31 @@ ALTER TABLE `volunteers`
 -- AUTO_INCREMENT for table `admin_datas`
 --
 ALTER TABLE `admin_datas`
-  MODIFY `admin_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `composes`
 --
 ALTER TABLE `composes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `emergencies`
 --
 ALTER TABLE `emergencies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -692,10 +700,16 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `login_admins`
+--
+ALTER TABLE `login_admins`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -719,7 +733,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `role_user`
 --
 ALTER TABLE `role_user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `small_projects`
@@ -731,19 +745,19 @@ ALTER TABLE `small_projects`
 -- AUTO_INCREMENT for table `small_project_user`
 --
 ALTER TABLE `small_project_user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `studentships`
 --
 ALTER TABLE `studentships`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `studentship_user`
 --
 ALTER TABLE `studentship_user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -752,22 +766,16 @@ ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `user_login`
---
-ALTER TABLE `user_login`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `user_view_product`
 --
 ALTER TABLE `user_view_product`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `view_products`
 --
 ALTER TABLE `view_products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `volunteers`
@@ -809,9 +817,9 @@ ALTER TABLE `small_projects`
 -- Constraints for table `small_project_user`
 --
 ALTER TABLE `small_project_user`
-  ADD CONSTRAINT `user_small_project_payment_id_foreign` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`),
-  ADD CONSTRAINT `user_small_project_small_project_id_foreign` FOREIGN KEY (`small_project_id`) REFERENCES `small_projects` (`id`),
-  ADD CONSTRAINT `user_small_project_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `small_project_user_payment_id_foreign` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`),
+  ADD CONSTRAINT `small_project_user_small_project_id_foreign` FOREIGN KEY (`small_project_id`) REFERENCES `small_projects` (`id`),
+  ADD CONSTRAINT `small_project_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `studentships`
@@ -823,9 +831,9 @@ ALTER TABLE `studentships`
 -- Constraints for table `studentship_user`
 --
 ALTER TABLE `studentship_user`
-  ADD CONSTRAINT `user_studentship_payment_id_foreign` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`),
-  ADD CONSTRAINT `user_studentship_studentship_id_foreign` FOREIGN KEY (`studentship_id`) REFERENCES `studentships` (`id`),
-  ADD CONSTRAINT `user_studentship_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `studentship_user_payment_id_foreign` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`),
+  ADD CONSTRAINT `studentship_user_studentship_id_foreign` FOREIGN KEY (`studentship_id`) REFERENCES `studentships` (`id`),
+  ADD CONSTRAINT `studentship_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `users`
