@@ -46,7 +46,7 @@
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="projects2.php" class="small-box-footer">للمزيد  <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{url('/dashboard/viewProduct')}}" class="small-box-footer">للمزيد  <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -65,7 +65,7 @@
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="projects3.php" class="small-box-footer">للمزيد <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{url('/dashboard/studentship')}}" class="small-box-footer">للمزيد <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -84,7 +84,7 @@
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="projects6.php" class="small-box-footer">للمزيد <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{url('/dashboard/volunteer')}}" class="small-box-footer">للمزيد <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -101,7 +101,7 @@
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="projects4.php" class="small-box-footer">للمزيد <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{url('/dashboard/Emergency')}}" class="small-box-footer">للمزيد <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 		  

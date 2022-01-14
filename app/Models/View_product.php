@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class View_product extends Model
 {
+
     protected $guarded=['id','created_at','updated_at'];
     use HasFactory;
 

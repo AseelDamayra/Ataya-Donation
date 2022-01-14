@@ -23,7 +23,7 @@ class CreateViewProductsTable extends Migration
             $table->integer("mobile");
             $table->string("filename",255)->nullable();
             $table->foreignId('user_id')->constrained() ;
-            $table->enum('reqStatus',['0','1'])->default('0');
+            $table->integer("reqStatus")->default(0);
             $table->timestamps();
         });
     }

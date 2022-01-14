@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\View_product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -38,10 +39,10 @@ public function deletep(View_product $product,Request $request){
         return view('admin.product.requestp')->with($data);
     }
 
-    public function productDeletereq($id,Request $request){
+    public function productreq($id,Request $request){
 
 
-        $delete = View_product::where('id',$id)
+        $req = View_product::where('id',$id)
         ->update(['status' => '2']);
         $request->session()->flash('success','تمت العملية بنجاح');
            
@@ -49,4 +50,22 @@ public function deletep(View_product $product,Request $request){
             return back();
         } 
   
+
+      
+
+        public function productDeletereq($id,Request $request){
+         
+         
+        $req = View_product::where('id',$id)
+        ->update(['reqStatus' => '0']);
+
+        User::find(1)->viewproduct()->detach($id);
+
+        $request->session()->flash('success','تمت العملية بنجاح');
+           
+         
+            return back();
+            
+            
+        }
 }

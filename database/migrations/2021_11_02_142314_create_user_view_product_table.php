@@ -15,8 +15,8 @@ class CreateUserViewProductTable extends Migration
     {
         Schema::create('user_view_product', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('view_product_id')->constrained();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('view_product_id')->references('id')->on('view_products')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -74,19 +74,26 @@
     <td>{{$reqp->topic}}</td>
   
     
-                 @if($reqp->status == 1)
+                 @if($reqp->status == 1 )
                       <td >
                    
-                          <a class="btn btn-danger text-light btn-sm" href="{{url("/dashboard/viewProductReq/$reqp->id")}}" >
-                              <i class="fas fa-trash">
-                              </i>
-                              حذف
+                          <a class="btn btn-success text-light btn-sm" href="{{url("/dashboard/viewProductReq/$reqp->id")}}" >
+                          <i class="fas fa-box-open"></i>
+                          استلام الطلب
                           </a>
                       </td>
+                      <td >
                  
-                   
-	   @endif 
-					  
+                 
+                   <a class="btn btn-danger text-light btn-sm" href="{{url("/dashboard/viewProductReqDelete/$reqp->id")}}" >
+                       <i class="fas fa-trash">
+                       </i>
+                       الغاء الطلب
+                   </a>
+               </td>
+                   @endif  
+
+                
 
 </tr>
 @endforeach

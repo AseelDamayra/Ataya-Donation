@@ -130,7 +130,8 @@ Route::prefix('/dashboard')->group(function(){
     Route::get('/viewProductAcc/{Accproduct}',[ViewProductController::class,'Acceptp']) ; 
     Route::get('/viewProductDelete/{product}',[ViewProductController::class,'deletep']) ;
     Route::get('/viewProductReq',[ViewProductController::class,'viewProductReq']) ; 
-    Route::get('/viewProductReq/{id}',[ViewProductController::class,'productDeletereq']) ; 
+    Route::get('/viewProductReq/{id}',[ViewProductController::class,'productreq']) ; 
+    Route::get('/viewProductReqDelete/{id}',[ViewProductController::class,'productDeletereq']);
 
     Route::get('/volunteer',[VController::class,'volunteer']) ; 
     Route::get('/volunteerAcc/{Accvolunteer}',[VController::class,'Acceptv']) ; 

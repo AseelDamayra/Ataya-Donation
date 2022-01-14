@@ -153,11 +153,11 @@ class DonateController extends Controller
     }
       else if($request->payment_id == 1){
         if(strlen($checkid) >16 || strlen($checkid) <16 ){
-            Session::flash('danger', 'يجب ان يكون رقم الهوية مكون من 9 خانات');
+            Session::flash('danger', 'يجب ان يكون رقم الهوية مكون من 16 خانات');
             return back();
         }
         if(strlen($CVV) >3 || strlen($CVV) <3 ){
-            Session::flash('danger', 'يجب ان يكون الرقم التعريفي مكون من 9 خانات');
+            Session::flash('danger', 'يجب ان يكون الرقم التعريفي مكون من 3 خانات');
             return back();
         }
 

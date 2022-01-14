@@ -17,7 +17,6 @@ class HomeController extends Controller
 
      public function index(){
 
-        $data['admin']=Admin_data::select('name')->get();
          $data['smallPAcc']=Small_project::where('status','1')->count();
          $data['smallPNAcc']=Small_project::where('status','0')->count();
 

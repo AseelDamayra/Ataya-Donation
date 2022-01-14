@@ -53,21 +53,13 @@ class CausesController extends Controller
       $user=Auth::user();
       $product=View_product::findOrFail($id);
       
-     
-      $countuser = $product->user()->count();
-    if($countuser > 0){
-        $vp = View_product::where('id',$id)
-        ->update(['reqStatus' => '1']);
-        Session::flash('danger', 'تم طلب المنتج مسبقا');
-        return back();
-    }else{
         
          $user->viewproduct()->attach($id);
          $vp = View_product::where('id',$id)
          ->update(['reqStatus' => '1']);
       Session::flash('success', 'تم طلب المنتج بنجاح');
      return back();
-     }
+     
      
     }
 
